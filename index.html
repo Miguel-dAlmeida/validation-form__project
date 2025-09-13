@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form Project</title>
+
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/responsive.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <main>
+            <header class="cta">
+                <h1 class="cta__title">Still have questions? Send us a message.</h1>
+                <p class="cta__paragraph">If you’re unsure about anything, just reach out — we guarantee a response
+                    within 24 hours.</p>
+            </header>
+            <form class="form">
+                <div class="form__item form__item--valid form__item--invalid">
+                    <label class="form__field-label" for="username">Full Name:</label>
+                    <input class="form__text-box" type="text" name="username" id="username" placeholder="Full Name *">
+                    <span class="form__message-error">Required field!</span>
+                </div>
+                <div class="form__item form__item--valid form__item--invalid">
+                    <label class="form__field-label" for="email">Email:</label>
+                    <input class="form__text-box" type="email" id="email" name="email" placeholder="Email *">
+                    <span class="form__message-error">Required field</span>
+                </div>
+                <div class="form__item form__item--valid form__item--invalid">
+                    <label class="form__field-label" for="phoneNumber">Phone Number:</label>
+                    <input class="form__text-box" type="tel" id="phoneNumber" name="phoneNumber"
+                        placeholder="Phone Number *" maxlength="11">
+                    <span class="form__message-error">Required field</span>
+                </div>
+                <div class="form__item form__item--valid form__item--invalid">
+                    <label class="form__field-label" for="message">Message:</label>
+                    <textarea class="form__text-box form__text-box--large" id="message" placeholder="Message *" autocapitalize="sentences"
+                        name="message"></textarea>
+                    <span class="form__message-error">Required field</span>
+                </div>
+                <p class="form__paragraph">*Required fields</p>
+                <button class="form__submit-button">Send</button>
+            </form>
+        </main>
+
+        <footer class="credits">
+            <p class="credits__paragraph">
+                <small>
+                    Challenge by&nbsp;<a class="credits__link" href="https://evento.devemdobro.com/lista-de-espera"
+                        target="_blank" rel="noopener noreferrer" translate="no">DevQuest Course</a>.
+                    Coded by&ensp;<a class="credits__link" href="https://github.com/Miguel-dAlmeida" target="_blank"
+                        rel="noopener noreferrer" translate="no">Mário Miguel de Almeida</a>.
+                </small>
+            </p>
+        </footer>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

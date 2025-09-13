@@ -1,0 +1,43 @@
+/* 
+    Definição das Media Queries:
+    1. max-width: 800px
+        Abrangerá todas as telas com largura máxima de 800px, sejam elas portrait ou landscape
+    2. min-width: 801px and orientation: portrait
+        Abragerá larguras superiores a 800px, com a condição de que sejam portrait. Optei por essa media-querie, pois, em larguras superiores a 800px, a demanda por um layout mobile só acontece quando a largura é superior a altura.
+*/
+
+@media (max-width: 790px) {
+    html {
+        font-size: min(10px, 1vw);
+    }
+}
+
+/* Antes: max-width: 700px */
+@media (min-width: 320px) and (orientation: portrait) {
+    html {
+        font-size: max(8px, 2.5vw);
+    }
+
+    .page-wrapper {
+        & main {
+            /* margin-top: inherit; */
+            flex-direction: column;
+            justify-content: center;
+            padding-bottom: 4rem;
+            gap: 5vh;
+
+            & .cta {}
+
+            & .form {
+                height: 43rem;
+                padding: 3.5rem max(2rem, 2.5vw) 0;
+                
+
+
+                & .form__paragraph {
+                    margin-bottom: 2.5em;
+                }
+            }
+        }
+    }
+}
