@@ -19,19 +19,20 @@
     }
 
     .page-wrapper {
+        /* Estávamos quebrando a cebeça com uma área em branco que aparecia na margem inferior da página. A simples aplicação dessa propriedade resolveu isso.
+        Não só isso, mas também possibilitou o scroll vetical em alturas reduzidas (uma grande surpresa) */
+        overflow: hidden;
+
         & main {
-            /* margin-top: inherit; */
             flex-direction: column;
             justify-content: center;
             padding-bottom: 4rem;
             gap: 5vh;
 
-            & .cta {}
-
             & .form {
                 height: 43rem;
                 padding: 3.5rem max(2rem, 2.5vw) 0;
-                
+
 
 
                 & .form__paragraph {
