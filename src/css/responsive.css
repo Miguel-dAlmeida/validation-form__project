@@ -1,19 +1,17 @@
 /* 
-    Definição das Media Queries:
-    1. max-width: 800px
-        Abrangerá todas as telas com largura máxima de 800px, sejam elas portrait ou landscape
-    2. min-width: 801px and orientation: portrait
-        Abragerá larguras superiores a 800px, com a condição de que sejam portrait. Optei por essa media-querie, pois, em larguras superiores a 800px, a demanda por um layout mobile só acontece quando a largura é superior a altura.
+    Antes: (max-width: 800px)
+    Depois: (max-width: 799px)
+    Mas porque?
+    Pois a media querie anterior estava atrapalhando a base no style.css. A construção da base utiliza como parâmetro "tamanho de fonte do html = 1rem = 10px" e largura fixa de 800px.
+    Na media querie anterior, em 800px de largura, o tamanho de fonte 1rem do html já não é mais 10px e isso despadroniza e confunde o código. 
 */
-
-@media (max-width: 790px) {
+@media (max-width: 799px) and (orientation: landscape) {
     html {
         font-size: min(10px, 1vw);
     }
 }
 
-/* Antes: max-width: 700px */
-@media (min-width: 320px) and (orientation: portrait) {
+@media (max-width: 800px) and (orientation: portrait) {
     html {
         font-size: max(8px, 2.5vw);
     }
@@ -40,5 +38,53 @@
                 }
             }
         }
+
+        & .credits .credits__paragraph small {
+            font-size: 1.1rem;
+        }
     }
 }
+
+/* Essa media-querie serve para adaptar telas grandes (como de monitores desktop) em orientação portrait. A partir de 1000px de largura, o layout desktop é suficiente, independentemente da altura. A regra `min-height: 1000px` protege as media queries acima. */
+@media (max-width: 1000px) and (min-height: 1000px) {
+    html {
+        font-size: max(15px, 1.8vw);
+    }
+
+    .page-wrapper {
+        /* Estávamos quebrando a cebeça com uma área em branco que aparecia na margem inferior da página. A simples aplicação dessa propriedade resolveu isso.
+        Não só isso, mas também possibilitou o scroll vetical em alturas reduzidas (uma grande surpresa) */
+        overflow: hidden;
+
+        & main {
+            flex-direction: column;
+            justify-content: center;
+            padding-bottom: 4rem;
+            gap: 5vh;
+
+            & .form {
+                height: 43rem;
+                padding: 3.5rem max(2rem, 2.5vw) 0;
+
+
+
+                & .form__paragraph {
+                    margin-bottom: 2.5em;
+                }
+            }
+        }
+    }
+}
+
+/* Essa media-querie serve para telas com altura ligeiramente parecida com a largura em orientação portrait. 
+A estratégia de criação foi utilizar uma largura fixa (500px) e testar em quais larguras era necessário comprimir o layout para que ele cabesse. Ao concluir que no intervalo de 500px a 800px, levando em consideração a largura de 500px, era necessário comprimir o layout a medida que a altura da tela era reduzida, transferi essa medidas para proporção, de modo a atingir outros dispositivos e não ficar limitado à medidas fixas. 
+As media-queries que não utilizam `aspect-ratio` servem para evitar sobreposições nos pontos de quebra acima.
+*/
+@media (min-aspect-ratio: 0.625/1) and (max-aspect-ratio: 1/1) and (orientation: portrait) and (max-width: 800px) and (max-height: 1000px) {
+
+    /* Estilos para telas quase quadradas ou levemente verticais */
+    html {
+        font-size: min(15px, 1.5vh);
+    }
+}
+

@@ -6,6 +6,7 @@
     font-family: 'Roboto';
     line-height: 100%;
 }
+
 body {
     min-height: 100vh;
 }
@@ -21,7 +22,8 @@ button {
     cursor: pointer;
 }
 
-label, span {
+label,
+span {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -33,10 +35,15 @@ label, span {
     border: 0;
 }
 
-:focus {
+/* input:focus {
     outline: none;
+    box-shadow: none;
 }
 
-:focus-visible {
+:focus {
+    outline: none;
+} */
+
+/* :focus-visible {
     outline: 2px solid black;
-}
+} */
